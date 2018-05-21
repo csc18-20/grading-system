@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class SpreadsheetsController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
     /**
      * displays a list of all spreadsheets.
      *
@@ -34,10 +38,11 @@ class SpreadsheetsController extends Controller
         );
     }
 
-    public function show($id)
+    public function show(Spreadsheet $spreadsheet)
     {
-        $spreadsheet = Spreadsheet::find($id);
-
-        return view('spreadsheets.show', compact('spreadsheet'));
+        
+        $marks=$spreadsheet->marks()->get();
+        
+        return view('spreadsheets.show', compact('spreadsheet','marks'));
     }
 }

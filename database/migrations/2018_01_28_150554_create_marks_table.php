@@ -14,8 +14,7 @@ class CreateMarksTable extends Migration
         Schema::create('marks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('spreadsheet_id')->unsigned()->index();
-            $table->string('reg_no');
-            $table->string('student_name');
+            $table->integer("user_id")->unsigned()->index();
             $table->double('final_mark')->unsigned();
             $table->text('assignments');
             $table->text('exam');

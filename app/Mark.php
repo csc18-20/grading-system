@@ -6,6 +6,34 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mark extends Model
 {
+    protected $fillable=["final_mark"];
+    public const GRADES=[
+        "A"=>80,
+        "B+"=>75,
+        "B"=>70,
+        "C+"=>65,
+        "C"=>60,
+        "D+"=>55,
+        "D"=>50,
+        "E"=>45,
+        "F"=>0
+    ];
+
+    public const GRADE_POINTS=[
+        "A"=>5,
+        "B+"=>4.5,
+        "B"=>4,
+        "C+"=>3.5,
+        "C"=>3,
+        "D+"=>2.5,
+        "D"=>2,
+        "E"=>1,
+        "F"=>0
+    ];
+    protected $casts=["assignments"=>"array","exam"=>"array"];
+
+
+
     public static function prepareRaw($row)
     {
         return [
@@ -44,5 +72,25 @@ class Mark extends Model
         }
 
         return json_encode(array_filter($exam));
+    }
+
+    public function getGradeAttribute()
+    {
+        foreach (self::GRADES as $grade=>$mark) {
+            if ($this->final_mark>=$mark) {
+                return $grade;
+            }
+            
+        }
+    }
+
+    public function getPointsAttribute()
+    {
+        return self::GRADE_POINTS[$this->grade] ?? null;
+    }
+
+    public function spreadsheet()
+    {
+        return $this->belongsTo(SpreadSheet::class);
     }
 }

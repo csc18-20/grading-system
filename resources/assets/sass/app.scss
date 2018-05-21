@@ -1,17 +1,26 @@
-// $primary: #004d29;
+$primary: #004d29;
 
 // $border-radius: 0;
-// @import "node_modules/bootstrap/scss/bootstrap";
-// @import "~font-awesome/scss/font-awesome";
-// .navbar {
-//     border-top: 2px solid $primary;
-// }
-
-// .card {
-//     box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
-// }
-//
-
-div {
-    display: flex;
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "~font-awesome/scss/font-awesome";
+@import '~datatables.net-dt/css/jquery.dataTables';
+.container{
+	margin-top:100px;
+	min-height:80vh;
 }
+.navbar {
+    border-top: 2px solid $primary;
+     border-bottom: 1px solid #e4e4e4;
+}
+.navbar{		
+               box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.3), 0 4px 6px 0 rgba(0, 0, 0, 0.1);
+            }
+.active{
+	border-bottom:1px solid $primary;
+}
+
+.card {
+	margin-top:20px;
+}
+
+

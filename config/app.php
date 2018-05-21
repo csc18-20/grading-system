@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'default_password'=>'$2y$10$N9rzsrtYuIAA4GWuoQ872OcNOc4NOYq8KknCRSRH8e1uQBznYKTRu',
     /*
     |--------------------------------------------------------------------------
     | Application Name
